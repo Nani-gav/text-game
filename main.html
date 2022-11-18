@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- the text that appears on the browser tab -->
+    <title>Sus amonugs imposter game</title>
+    <script>
+      // add game logic here
+      const game = {
+        "start": ["U wake up in amongus land. You see a wild manigav. He is procrastinating. sus", ["slap", "Slap him"], ["explore", "Explore the place"]],
+        "slap": ["\"Manigaff stop doing this and study social\", you say after slapping him. \"If you say so\", he replies. He stops writing ur story." /*add choices here*/],
+        "explore": ["You keep walking as manigav taps away at his keyboard. U run into a gendry. He doesnt seem sus", ["talk_g", "Talk to him"], ["kill_g", "Kill him"]],
+        "kill_g": ["You walk up to gendry and kill him with ur newfound amogus powers. Suddenly, you feel a weird sensation thoughout ur body. Ur body contorts. You try to scream in agony but not a whisper escapes. Its all on the inside, all the pain and fury. You are now... an imposter."],
+        "talk_g": ["\"Mr. Gitler, are u imposter\", you ask him. \"No\", he says. From the other room you hear manigav shout, \"bro, i have to stop writing, maybe i'll finish this tomorrow.\""]
+      }
+      // until here
+
+      function add(mesg){
+        const para = document.createElement("p");
+        const node = document.createTextNode(game[mesg][0]);
+        para.appendChild(node);
+        const element = document.getElementById("game");
+        element.appendChild(para);
+        if(1 == game[mesg].length){
+          const para = document.createElement("p");
+          const bold = document.createElement("b");
+          const node = document.createTextNode("THE END");
+          para.appendChild(bold);
+          bold.appendChild(node);
+          element.appendChild(para);
+        }else{
+          for(i = 1; i<game[mesg].length; i++){
+            const but = document.createElement("button");
+            const node = document.createTextNode(game[mesg][i][1]);
+            but.appendChild(node);
+            but.setAttribute("onclick", `add("${game[mesg][i][0]}");`);
+            element.appendChild(but);
+          }
+        }
+        const h = document.createElement("hr");
+        element.appendChild(h);
+      }
+      window.onload = function(){
+        // If you are testing and want to start somewhere in the middle change this
+        add("start");
+      };
+    </script>
+  </head>
+  <body>
+    <div id="game">
+      <!-- add the game's title here -->
+      <p><b>Sussy Adventur</b><p>
+    </div>
+  </body>
+</html>
